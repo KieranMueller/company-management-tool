@@ -1,0 +1,37 @@
+<div class="add-user-overlay" *ngIf="modalVisible">
+  <div class="add-user-container">
+    <div class="exit-button" (click)="exit()">
+      <img
+        class="exit-icon"
+        src="../../../assets/images/exit-icon.svg"
+        alt="exit"
+      />
+    </div>
+    <div class="content-div">
+      <div class="label-input">
+        <label for="name">Project Name</label>
+        <input type="text" id="name" name="name" [(ngModel)]="projectName" />
+      </div>
+      <div class="label-input">
+        <label for="description">Description</label>
+        <input
+          type="text"
+          id="description"
+          name="description"
+          [(ngModel)]="description"
+        />
+      </div>
+    </div>
+    <div>
+      <button
+        (click)="postOrPut()"
+        class="submit-button"
+        value="Login"
+        [disabled]="projectName === '' || description === ''"
+      >
+        {{ admin ? "Save" : "Submit" }}
+      </button>
+      <p>{{ result }}</p>
+    </div>
+  </div>
+</div>

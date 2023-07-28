@@ -1,0 +1,16 @@
+<app-navmenu> </app-navmenu>
+
+<div class="teams-page-container">
+  <h1>Teams</h1>
+  <div class="teams-container">
+    <app-team-card *ngFor="let team of teams" [team]="team"></app-team-card>
+    <div class="new-team-container" (click)="toggleOverlay()">
+      <img class="plus" src="../../../assets/images/plus.svg" />
+      <div class="new-team-label">New Team</div>
+    </div>
+  </div>
+</div>
+<app-create-team-overlay
+  (updateOverlay)="toggleOverlay()"
+  *ngIf="showOverlay"
+></app-create-team-overlay>
