@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './navmenu.component.html',
   styleUrls: ['./navmenu.component.css'],
 })
-export class NavmenuComponent {
+export class NavmenuComponent implements OnInit {
   isAdmin = false;
   toggleMenu = false;
   profile: any;

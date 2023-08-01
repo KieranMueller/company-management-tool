@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 interface Announcement {
+  id: number;
   name: string;
   date: Date;
   title: string;
@@ -30,6 +31,7 @@ export class AnnouncementsComponent {
       next: (data) => {
         this.announcements = data.map((announcement: any) => {
           return {
+            id: announcement.id,
             name:
               announcement.author.profile.firstName +
               ' ' +

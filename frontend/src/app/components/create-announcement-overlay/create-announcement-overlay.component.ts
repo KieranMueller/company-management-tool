@@ -18,6 +18,7 @@ export class CreateAnnouncementOverlayComponent implements OnInit {
   @Output() updateOverlay = new EventEmitter<any>();
 
   constructor(private http: HttpClient) {}
+
   ngOnInit(): void {
     const companyId = JSON.parse(localStorage.getItem('companyId')!);
     if (companyId) this.companyId = companyId;
@@ -51,7 +52,6 @@ export class CreateAnnouncementOverlayComponent implements OnInit {
           this.submit = true;
         },
         complete: () => {
-          this.result = '';
           window.location.reload();
           this.exit();
         },
