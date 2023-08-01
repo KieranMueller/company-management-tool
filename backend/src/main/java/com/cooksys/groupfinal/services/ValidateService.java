@@ -1,10 +1,7 @@
 package com.cooksys.groupfinal.services;
 
 import com.cooksys.groupfinal.dtos.BasicUserDto;
-import com.cooksys.groupfinal.entities.Company;
-import com.cooksys.groupfinal.entities.Project;
-import com.cooksys.groupfinal.entities.Team;
-import com.cooksys.groupfinal.entities.User;
+import com.cooksys.groupfinal.entities.*;
 
 public interface ValidateService {
 
@@ -17,4 +14,6 @@ public interface ValidateService {
     Team findTeam(Long id);
 
     Project findProject(Long id);
+
+    Announcement findAnnouncement(Long id);
 }

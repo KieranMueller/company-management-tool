@@ -5,4 +5,6 @@ import com.cooksys.groupfinal.dtos.AnnouncementDto;
 public interface AnnouncementService {
 
     AnnouncementDto postAnnouncement(Long id, AnnouncementDto announcementDto);
+
+    AnnouncementDto deleteAnnouncement(Long id);
 }

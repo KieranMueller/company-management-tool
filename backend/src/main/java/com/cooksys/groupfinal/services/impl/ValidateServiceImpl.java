@@ -1,17 +1,11 @@
 package com.cooksys.groupfinal.services.impl;
 
 import com.cooksys.groupfinal.dtos.BasicUserDto;
-import com.cooksys.groupfinal.entities.Company;
-import com.cooksys.groupfinal.entities.Project;
-import com.cooksys.groupfinal.entities.Team;
-import com.cooksys.groupfinal.entities.User;
+import com.cooksys.groupfinal.entities.*;
 import com.cooksys.groupfinal.exceptions.BadRequestException;
 import com.cooksys.groupfinal.exceptions.NotFoundException;
 import com.cooksys.groupfinal.mappers.BasicUserMapper;
-import com.cooksys.groupfinal.repositories.CompanyRepository;
-import com.cooksys.groupfinal.repositories.ProjectRepository;
-import com.cooksys.groupfinal.repositories.TeamRepository;
-import com.cooksys.groupfinal.repositories.UserRepository;
+import com.cooksys.groupfinal.repositories.*;
 import com.cooksys.groupfinal.services.ValidateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,7 +20,7 @@ public class ValidateServiceImpl implements ValidateService {
     private final UserRepository userRepository;
     private final TeamRepository teamRepository;
     private final ProjectRepository projectRepository;
-    private final BasicUserMapper basicUserMapper;
+    private final AnnouncementRepository announcementRepository;
 
     @Override
     public Company findCompany(Long id) {
@@ -68,6 +62,14 @@ public class ValidateServiceImpl implements ValidateService {
         if (project.isEmpty())
             throw new NotFoundException("A project with the provided id does not exist.");
         return project.get();
+    }
+
+    @Override
+    public Announcement findAnnouncement(Long id) {
+        Optional<Announcement> announcement = announcementRepository.findByIdAndDeletedFalse(id);
+        if(announcement.isEmpty())
+            throw new NotFoundException("An announcement with the provided id does not exist");
+        return announcement.get();
     }
 
 }

@@ -40,9 +40,6 @@ public class UserServiceImpl implements UserService {
         User userToValidate = validateService.findUser(credentialsDto.getUsername());
         if (!userToValidate.getCredentials().equals(credentialsToValidate))
             throw new NotAuthorizedException("The provided credentials are invalid.");
-//        if (userToValidate.getStatus().equals("PENDING")) {
-//            userToValidate.setStatus("JOINED");
-//        }
         userRepository.saveAndFlush(userToValidate);
         return fullUserMapper.entityToFullUserDto(userToValidate);
     }

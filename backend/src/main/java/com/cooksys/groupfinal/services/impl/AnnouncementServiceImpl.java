@@ -34,4 +34,11 @@ public class AnnouncementServiceImpl implements AnnouncementService {
         announcement.getAuthor().setProfile(user.getProfile());
         return announcementMapper.entityToDto(announcementRepository.saveAndFlush(announcement));
     }
+
+    @Override
+    public AnnouncementDto deleteAnnouncement(Long id) {
+        Announcement announcement = validateService.findAnnouncement(id);
+        announcement.setDeleted(true);
+        return announcementMapper.entityToDto(announcementRepository.saveAndFlush(announcement));
+    }
 }
