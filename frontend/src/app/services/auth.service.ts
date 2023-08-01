@@ -11,13 +11,16 @@ export class AuthService {
 
   login(username: string, password: string): Observable<string> {
     return this.http.post<any>('http://localhost:8080/users/login', {
-      username: username,
+      username: username.toLowerCase(),
       password: password,
     });
   }
 
   logout(): void {
     localStorage.removeItem('user');
+    localStorage.removeItem('companyName');
+    localStorage.removeItem('companyTeamIds');
+    localStorage.removeItem('companyId');
     this.router.navigate(['/login']);
   }
 
