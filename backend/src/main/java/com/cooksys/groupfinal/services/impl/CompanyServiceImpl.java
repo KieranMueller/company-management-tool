@@ -47,6 +47,7 @@ public class CompanyServiceImpl implements CompanyService {
         Company company = validateService.findCompany(id);
         List<Announcement> sortedList = new ArrayList<>(company.getAnnouncements());
         sortedList.sort(Comparator.comparing(Announcement::getDate).reversed());
+        sortedList.removeIf(Announcement::isDeleted);
         Set<Announcement> sortedSet = new HashSet<>(sortedList);
         return announcementMapper.entitiesToDtos(sortedSet);
     }
