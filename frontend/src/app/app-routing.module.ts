@@ -12,8 +12,8 @@ import { RoleGuard } from './services/role.guard';
 import { AddUserOverlayComponent } from './components/add-user-overlay/add-user-overlay.component';
 
 const routes: Routes = [
-  { path: '', component: AnnouncementsComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
+  { path: '', component: AnnouncementsComponent, canActivate: [AuthGuard] },
   {
     path: 'select-company',
     component: SelectCompanyComponent,
@@ -24,23 +24,20 @@ const routes: Routes = [
     component: TeamsComponent,
     canActivate: [AuthGuard, RoleGuard],
   },
-  { path: 'projects', component: ProjectsComponent, 
-  // canActivate: [AuthGuard]
- },
+  {
+    path: 'projects',
+    component: ProjectsComponent,
+    canActivate: [AuthGuard],
+  },
   {
     path: 'user-registry',
     component: UserRegistryComponent,
     canActivate: [AuthGuard, RoleGuard],
   },
   {
-    path: 'navigation',
-    component: NavmenuComponent,
-    // canActivate: [AuthGuard, RoleGuard],
-  },
-  {
-    path: 'add-user',
-    component: AddUserOverlayComponent,
-    canActivate: [AuthGuard, RoleGuard],
+    path: '**',
+    component: AnnouncementsComponent,
+    canActivate: [AuthGuard],
   },
 ];
 

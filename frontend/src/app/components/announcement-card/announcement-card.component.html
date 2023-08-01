@@ -12,5 +12,12 @@
         {{ content }}
       </p>
     </div>
+    <img
+      *ngIf="isAdmin"
+      (click)="delete()"
+      class="delete-icon"
+      src="../../../assets/images/trash.svg"
+      alt="delete icon"
+    />
   </div>
 </div>

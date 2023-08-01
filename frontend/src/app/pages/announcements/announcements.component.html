@@ -11,6 +11,7 @@
   </div>
   <div *ngFor="let announcement of announcements">
     <app-announcement-card
+      [id]="announcement.id"
       [name]="announcement.name"
       [date]="announcement.date"
       [title]="announcement.title"

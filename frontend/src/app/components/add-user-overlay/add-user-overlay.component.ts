@@ -22,7 +22,8 @@ export class AddUserOverlayComponent {
   constructor(private http: HttpClient) {}
 
   addUser(form: any) {
-    this.user.credentials.username = form.firstName + '.' + form.lastName;
+    this.user.credentials.username =
+      form.firstName.toLowerCase() + '.' + form.lastName.toLowerCase();
     this.user.credentials.password = form.password;
     this.user.profile.firstName = form.firstName;
     this.user.profile.lastName = form.lastName;
@@ -41,7 +42,6 @@ export class AddUserOverlayComponent {
         this.result = 'something went wrong';
       },
       complete: () => {
-        this.result = '';
         window.location.reload();
         this.handleOverlayExit();
       },
